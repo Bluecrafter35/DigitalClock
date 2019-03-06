@@ -1,7 +1,9 @@
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -27,18 +29,33 @@ public class ClockPanel extends JPanel implements Runnable
     
     private DigitsLabel[] labels = new DigitsLabel[8];
     
+    private ZoneId zoneid;
+    
     public ClockPanel()
     {
-        this.setSize(120*8, 200);
+        this.zoneid = ZoneId.systemDefault();
+        this.setBackground(Color.BLACK);
+        this.setSize((80*8)+60, 194);
         this.setLayout(new GridLayout(1, 8));
         this.setName("paClock");
-        updateTime();
+        updateTime(zoneid);
         initComponents();
     }
     
-    public void updateTime()
+    public ClockPanel(String zone)
     {
-        time=LocalTime.now(); 
+        this.zoneid= ZoneId.of(zone);
+        this.setBackground(Color.BLACK);
+        this.setSize((80*8)+60, 194);
+        this.setLayout(new GridLayout(1, 8));
+        this.setName("paClock");
+        updateTime(zoneid);
+        initComponents();
+    }
+    
+    public void updateTime(ZoneId zone)
+    {
+        time=LocalTime.now(zone); 
         hours=time.getHour();
         minutes=time.getMinute();
         seconds=time.getSecond();
@@ -80,17 +97,17 @@ public class ClockPanel extends JPanel implements Runnable
         {
             switch(i)
             {
-                case 0: label = new DigitsLabel(hours/10);
+                case 0: label.changeValue(hours/10);
                 break;
-                case 1: label = new DigitsLabel(hours%10);
+                case 1: label.changeValue(hours%10);
                 break;
-                case 3: label = new DigitsLabel(minutes/10);
+                case 3: label.changeValue(minutes/10);
                 break;
-                case 4: label = new DigitsLabel(minutes%10);
+                case 4: label.changeValue(minutes%10);
                 break;
-                case 6: label = new DigitsLabel(seconds/10);
+                case 6: label.changeValue(seconds/10);
                 break;
-                case 7: label = new DigitsLabel(seconds%10);
+                case 7: label.changeValue(seconds%10);
                 break;
             }
             labels[i]=label;
@@ -104,12 +121,11 @@ public class ClockPanel extends JPanel implements Runnable
     {
         do
         {
-            System.out.println("Thread");
             try {
-                Thread.sleep(500);
-                updateTime();
+                Thread.sleep(1000);
+                updateTime(zoneid);
                 updateComponents();
-                repaint();
+                //repaint();
             } catch (InterruptedException ex) {
                 Logger.getLogger(ClockPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -19,7 +19,7 @@ public enum Digits
     
     private Digits(String path)
     {
-        img = new ImageIcon(path).getImage().getScaledInstance(120, 200, Image.SCALE_SMOOTH);
+        img = new ImageIcon(path).getImage().getScaledInstance(80, 134, Image.SCALE_SMOOTH);
     }
     
     public Image getImg()

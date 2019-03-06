@@ -1,5 +1,4 @@
 
-import java.time.LocalTime;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -20,7 +19,6 @@ public class DigitsLabel extends JLabel
     
     public DigitsLabel(int value)
     {
-        this.setOpaque(true);
         this.value=value;
         switch(value)
         {
@@ -28,7 +26,7 @@ public class DigitsLabel extends JLabel
             break;
             case 1: digit=Digits.ONE;
             break;
-            case 2: digit=Digits.THREE;
+            case 2: digit=Digits.TWO;
             break;
             case 3: digit=Digits.THREE;
             break;
@@ -52,6 +50,35 @@ public class DigitsLabel extends JLabel
     {
         this.value=-1;
         this.digit=Digits.POINT;
+        this.setIcon(new ImageIcon(digit.getImg()));
+        repaint();
+    }
+    
+    public void changeValue(int value)
+    {
+        this.value=value;
+        switch(value)
+        {
+            case 0: digit=Digits.ZERO;
+            break;
+            case 1: digit=Digits.ONE;
+            break;
+            case 2: digit=Digits.TWO;
+            break;
+            case 3: digit=Digits.THREE;
+            break;
+            case 4: digit=Digits.FOUR;
+            break;
+            case 5: digit=Digits.FIVE;
+            break;
+            case 6: digit=Digits.SIX;
+            break;
+            case 7: digit=Digits.SEVEN;
+            break;
+            case 8: digit=Digits.EIGHT;
+            break;
+            default: digit=Digits.NINE;
+        }
         this.setIcon(new ImageIcon(digit.getImg()));
         repaint();
     }

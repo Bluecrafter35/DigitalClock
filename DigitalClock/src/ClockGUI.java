@@ -1,3 +1,10 @@
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,11 +25,54 @@ public class ClockGUI extends javax.swing.JFrame
     public ClockGUI()
     {
         initComponents();
-        this.setSize((120*8)+60, 260);
-        ClockPanel panel = new ClockPanel();
-        this.add(panel);
-        Thread t = new Thread(panel);
-        t.start();
+        this.setSize((80*8)+60, (194*3)+(50*3)+30);
+        this.setLayout(new GridLayout(6, 1));
+        
+        ClockPanel clockpanel1 = new ClockPanel();
+        ClockPanel clockpanel2 = new ClockPanel("Africa/Harare");
+        ClockPanel clockpanel3 = new ClockPanel("Australia/Sydney");
+        
+        //Label für Localeuhrzeit
+            JLabel local = new JLabel();
+            local.setOpaque(true);
+            local.setHorizontalAlignment(JLabel.CENTER);
+            local.setForeground(Color.white);
+            local.setText("Lokale Uhrzeit:");
+            local.setFont(local.getFont().deriveFont(45f));
+            local.setSize((80*8)+60, 50);
+            local.setBackground(Color.BLACK);
+        //Label für Stadtname
+            JLabel africa = new JLabel();
+            africa.setOpaque(true);
+            africa.setHorizontalAlignment(JLabel.CENTER);
+            africa.setForeground(Color.white);
+            africa.setText("Uhrzeit in Africa/Harare:");
+            africa.setFont(africa.getFont().deriveFont(45f));
+            africa.setSize((80*8)+60, 50);
+            africa.setBackground(Color.BLACK); 
+        //Label für Stadtname
+            JLabel toto = new JLabel();
+            toto.setOpaque(true);
+            toto.setHorizontalAlignment(JLabel.CENTER);
+            toto.setForeground(Color.white);
+            toto.setText("Uhrzeit in Australia/Sydney:");
+            toto.setFont(toto.getFont().deriveFont(45f));
+            toto.setSize((80*8)+60, 50);
+            toto.setBackground(Color.BLACK);
+        
+        this.add(local);
+        this.add(clockpanel1);
+        this.add(africa);
+        this.add(clockpanel2);
+        this.add(toto);
+        this.add(clockpanel3);
+        
+        Thread clock1 = new Thread(clockpanel1);
+        clock1.start();
+        Thread clock2 = new Thread(clockpanel2);
+        clock2.start();
+        Thread clock3 = new Thread(clockpanel3);
+        clock3.start();
     }
 
     /**
