@@ -29,7 +29,7 @@ public class ClockPanel extends JPanel implements Runnable
     
     public ClockPanel()
     {
-        this.setSize(1920, 1080);
+        this.setSize(120*8, 200);
         this.setLayout(new GridLayout(1, 8));
         this.setName("paClock");
         updateTime();
@@ -38,7 +38,6 @@ public class ClockPanel extends JPanel implements Runnable
     
     public void updateTime()
     {
-        
         time=LocalTime.now(); 
         hours=time.getHour();
         minutes=time.getMinute();
@@ -105,11 +104,12 @@ public class ClockPanel extends JPanel implements Runnable
     {
         do
         {
-            updateTime();
-            updateComponents();
-            repaint();
+            System.out.println("Thread");
             try {
                 Thread.sleep(500);
+                updateTime();
+                updateComponents();
+                repaint();
             } catch (InterruptedException ex) {
                 Logger.getLogger(ClockPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

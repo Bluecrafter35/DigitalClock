@@ -18,6 +18,7 @@ public class ClockGUI extends javax.swing.JFrame
     public ClockGUI()
     {
         initComponents();
+        this.setSize((120*8)+60, 260);
         ClockPanel panel = new ClockPanel();
         this.add(panel);
         Thread t = new Thread(panel);
