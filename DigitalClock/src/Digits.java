@@ -14,11 +14,16 @@ import javax.swing.ImageIcon;
  */
 public enum Digits
 {
-    ZERO(".//Digits/7-segment-display-0.png"),ONE(".//Digits/7-segment-display-1.png"),TWO(".//Digits/7-segment-display-2.png"),THREE(".//Digits/7-segment-display-3.png"),FOUR(".//Digits/7-segment-display-4.png"),FIVE(".//Digits/7-segment-display-5.png"),SIX(),SEVEN(),EIGHT(),NINE();
+    ZERO(".//Digits/7-segment-display-0.png"),ONE(".//Digits/7-segment-display-1.png"),TWO(".//Digits/7-segment-display-2.png"),THREE(".//Digits/7-segment-display-3.png"),FOUR(".//Digits/7-segment-display-4.png"),FIVE(".//Digits/7-segment-display-5.png"),SIX(".//Digits/7-segment-display-6.png"),SEVEN(".//Digits/7-segment-display-7.png"),EIGHT(".//Digits/7-segment-display-8.png"),NINE(".//Digits/7-segment-display-9.png"),POINT(".//Digits/7-segment-display-doublePoint.png");
     private Image img;
     
     private Digits(String path)
     {
-        img = new ImageIcon(path).getImage().getScaledInstance(180, 130, Image.SCALE_SMOOTH);
+        img = new ImageIcon(path).getImage().getScaledInstance(120, 200, Image.SCALE_SMOOTH);
+    }
+    
+    public Image getImg()
+    {
+        return img;
     }
 }

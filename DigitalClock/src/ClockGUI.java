@@ -18,6 +18,10 @@ public class ClockGUI extends javax.swing.JFrame
     public ClockGUI()
     {
         initComponents();
+        ClockPanel panel = new ClockPanel();
+        this.add(panel);
+        Thread t = new Thread(panel);
+        t.start();
     }
 
     /**
@@ -30,27 +34,17 @@ public class ClockGUI extends javax.swing.JFrame
     private void initComponents()
     {
 
-        paClock = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        paClock.setLayout(new java.awt.GridLayout(1, 8));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(paClock, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(paClock, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 109, Short.MAX_VALUE)
         );
 
         pack();
@@ -95,6 +89,5 @@ public class ClockGUI extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel paClock;
     // End of variables declaration//GEN-END:variables
 }
