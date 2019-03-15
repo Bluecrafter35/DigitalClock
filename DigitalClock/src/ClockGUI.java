@@ -25,8 +25,8 @@ public class ClockGUI extends javax.swing.JFrame
     public ClockGUI()
     {
         initComponents();
-        this.setSize((80*8)+60, (194*3)+(50*3)+30);
-        this.setLayout(new GridLayout(6, 1));
+        this.setSize(1920, (194*3));
+        this.setLayout(new GridLayout(3, 2));
         
         ClockPanel clockpanel1 = new ClockPanel();
         ClockPanel clockpanel2 = new ClockPanel("Africa/Harare");
